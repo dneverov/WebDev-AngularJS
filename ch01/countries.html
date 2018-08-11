@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>AngularJS - Contries Population</title>
+    <meta charset="utf-8" />
+    <!--
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
+    -->
+    <script src="../common/javascript/angularjs/1.0.7/angular.js"></script>
+    <script type="text/javascript">
+var WorldCtrl = function ($scope) {
+  $scope.population = 7000;
+  $scope.countries = [
+    {name: 'France', population: 63.1},
+    {name: 'United Kingdom', population: 61.8},
+  ];
+
+  $scope.worldsPercentage = function(countryPopulation){
+    return (countryPopulation / $scope.population)*100;
+  }
+};
+    </script>
+  </head>
+  <body ng-app>
+    <!-- Population -->
+    <ul ng-controller="WorldCtrl">
+      <li ng-repeat="country in countries">
+        {{country.name}} has population of {{country.population}},
+        {{worldsPercentage(country.population)}} % of the World´s population.
+      </li>
+      <hr>
+      World’s population: {{population}} millions
+    </ul>
+  </body>
+</html>
