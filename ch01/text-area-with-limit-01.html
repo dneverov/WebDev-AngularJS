@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>AngularJS - Text Area With Limit</title>
+    <meta charset="utf-8" />
+    <link href="../common/stylesheets/bootstrap-combined.min.css" rel="stylesheet" />
+    <script src="../common/javascript/angularjs/1.0.7/angular.js"></script>
+    <script type="text/javascript" src="textarea-app.js"></script>
+  </head>
+  <body ng-app>
+    <!--
+PDF Book: Start in the end of p.39
+Example: /home/denis/Загрузки/webDev/angularjs-book-master/1820OS_01_Code/09 - DI - notifications service as a service and archive as value/index.html
+    -->
+    <!--  -->
+    <div class="container" ng-controller="TextAreaWithLimitCtrl">
+      <span ng-class="{'text-warning' : shouldWarn()}">
+        Remaining: {{remaining()}}
+      </span>
+      <div class="row">
+        <textarea ng-model="message">{{message}}</textarea>
+      </div>
+      <div class="row">
+        <button ng-disabled="!hasValidLength()" ng-click="send()">Send</button>
+        <button ng-click="clear()">Clear</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>AngularJS - Text Area With Limit</title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+.text-warning {
+  color: red;
+}
+    </style>
+    <!--
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
+    -->
+    <script src="../common/javascript/angularjs/1.0.7/angular.js"></script>
+    <script type="text/javascript">
+var TextAreaWithLimitCtrl = function ($scope) {
+  var MAX_LEN = 25;
+  var WARN_THRESHOLD = 10;
+  $scope.remaining = function () {
+    return MAX_LEN - $scope.message.length;
+  };
+  $scope.shouldWarn = function () {
+    return $scope.remaining() < WARN_THRESHOLD;
+  };
+};
+    </script>
+  </head>
+  <body ng-app>
+    <!--
+Start in the end of p.39
+    -->
+    <div class="container" ng-controller="TextAreaWithLimitCtrl">
+      <span ng-class="{'text-warning' : shouldWarn()}">
+        Remaining: {{remaining()}}
+      </span>
+      <div class="row">
+        <textarea ng-model="message">{{message}}</textarea>
+      </div>
+      <div class="row">
+        <button ng-disabled="!hasValidLength()" ng-click="send()">Send</button>
+        <button ng-click="clear()">Clear</button>
+      </div>
+    </div>
+  </body>
+</html>

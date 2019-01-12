@@ -1,0 +1,33 @@
+<head>
+    <title>AngularJS - HW</title>
+    <meta charset="utf-8" />
+    <!--
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
+    -->
+    <script src="../common/javascript/angularjs/1.0.7/angular.js"></script>
+    <script type="text/javascript">
+var HelloCtrl = function ($scope) {
+};
+    </script>
+  </head>
+<!--
+Опасности наследования в иерархии контекстов
+Механизм наследования в иерархии контекстов прост и понятен,
+когда речь идет о чтении свойств. Однако, когда дело доходит до опе-
+рации записи, возникают определенные сложности.
+Взгляните, что произойдет, если определить переменную в роди-
+тельском контексте и опустить ее в дочернем.
+p. 35
+-->
+  <body ng-app ng-init="name='World'">
+    <h1>Hello, {{ name }}!</h1>
+    
+    <div ng-controller="HelloCtrl">
+      Say hello to: <input type="text" ng-model="name" />
+      <h2>Hello, {{name}}!</h2>
+      <!--link to parent context (scope is a 'context') -->
+      <br />
+      Say hello to <code>$parent</code>: <input type="text" ng-model="$parent.name" />
+    </div>
+  </body>
+</html>

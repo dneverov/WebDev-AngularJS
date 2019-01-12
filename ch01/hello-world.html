@@ -8,16 +8,15 @@
     <script src="../common/javascript/angularjs/1.0.7/angular.js"></script>
     <script type="text/javascript">
 var HelloCtrl = function ($scope) {
-  $scope.getName = function(){
-    return $scope.name;
-  }
 }
     </script>
   </head>
-  <body ng-app>
+  <body ng-app ng-init="thing = {name: 'World'}">
+    <h1>Hello, {{ thing.name }}!</h1>
     <div ng-controller="HelloCtrl">
-      <h1>Hello, {{ getName() }}!</h1>
-      <input type="text" ng-model="name" />
+      
+      Say hello to: <input type="text" ng-model="thing.name" />
+      <h2>Hello, {{thing.name}}!</h2>
     </div>
   </body>
 </html>
