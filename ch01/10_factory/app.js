@@ -10,6 +10,11 @@ angular.module('notificationsApp', [])
       return notificationsService.getCurrent();
     };
 
+    // Archived Notifications
+    $scope.getArchivedNotifications = function () {
+      return notificationsArchive.getArchived();
+    };
+
   })
   .factory('notificationsService', function (notificationsArchive) {
     var MAX_LEN = 3;
@@ -34,7 +39,7 @@ angular.module('notificationsApp', [])
 
     return {
       archive:function (notification) {
-        archivedNotifications.push(notification);
+        archivedNotifications.unshift(notification);
       },
       getArchived:function () {
         return archivedNotifications;
