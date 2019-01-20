@@ -23,17 +23,21 @@ angular.module('notificationsApp', [])
       },
       /*
         В первую очередь провайдер – это функция, которая должна вер-
-        нуть объект, обладающий свойством $get . Свойство $get – это фаб-
-        ричная функция, возвращающая экземпляр службы. Провайдеры
-        можно считать объектами, встраивающими фабричные функции в
-        свое свойство $get .
+        нуть объект, обладающий свойством $get.
+        Свойство $get – это фабричная функция, возвращающая экземпляр службы.
+        Провайдеры можно считать объектами, встраивающими фабричные функции
+        в свое свойство $get .
       */
       $get : function(notificationsArchive) {
         return {
           push : function (notification) {
             var notificationToArchive;
+            /* Метод unshift() добавляет один или более элементов в начало массива
+            и возвращает новую длину массива. */
             var newLen = notifications.unshift(notification);
             if (newLen > config.maxLen) {
+              /* Метод pop() удаляет последний элемент из массива
+              и возвращает его значение. */
               notificationToArchive = notifications.pop();
               notificationsArchive.archive(notificationToArchive);
             }
